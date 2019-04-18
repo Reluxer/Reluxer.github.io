@@ -1,5 +1,10 @@
 // This css basically from yue.css, and I have done some change for it.
 
+
+::-webkit-scrollbar{
+  display:none;
+}
+
 .post {
   font-weight: 400;
   line-height: 1.8rem;
