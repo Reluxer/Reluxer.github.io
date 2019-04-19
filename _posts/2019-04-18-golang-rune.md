@@ -1,0 +1,51 @@
+
+
+## Code
+
+```Golang
+func TestRune(t *testing.T) {
+	s := "12一二"
+	t.Log(len(s))
+	t.Log("------")
+	for i, b := range []byte(s) { // utf8
+		t.Logf("%d %x", i, b)
+	}
+	t.Log("------")
+	for i, b := range s { // utf8 --> unicode
+		t.Logf("%d %x", i, b)
+	}
+	t.Log("------")
+	for i, b := range []rune(s) { // utf8 --> unicode --> []rune
+		t.Logf("%d %x", i, b)
+	}
+}
+```
+
+## Output:
+
+```
+8
+------
+0 31
+1 32
+2 e4
+3 b8
+4 80
+5 e4
+6 ba
+7 8c
+------
+0 31
+1 32
+2 4e00
+5 4e8c
+------
+0 31
+1 32
+2 4e00
+3 4e8c
+```
+
+## Ref
+
+- [字符编码笔记：ASCII，Unicode 和 UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
